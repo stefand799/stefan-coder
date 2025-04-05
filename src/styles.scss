@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+$black: #040505ff;
+$engineering-orange: #ba1200ff;
+$floral-white: #FCF9F2ff;
+$taupe-gray: #8d8d92ff;
+$eerie-black: #151A1Aff;
+
+/* General Style for HTML and Body */
+html, body {
+    height: 100%;  /* Ensure full height for the entire page */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent unwanted scroll */
+    scroll-behavior: smooth; /* Smooth scrolling */
+  }
+  
+  /* Prevent the scroll bar from appearing */
+  * {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+  
+  *::-webkit-scrollbar {
+    width: 0px;  /* Width of the scrollbar */
+    height: 0px;  /* Height of the scrollbar (horizontal) */
+  }

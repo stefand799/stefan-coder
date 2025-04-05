@@ -1,0 +1,137 @@
+/* Color Palette */
+$black: #040505ff;
+$engineering-orange: #ba1200ff;
+$floral-white: #FCF9F2ff;
+$taupe-gray: #8d8d92ff;
+$eerie-black: #151A1Aff;
+
+/* Make the entire header sticky */
+header {
+  position: sticky;
+  top: 0;
+  background-color: $black;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 5.6vh;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Navbar List Styling */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Flexbox on li */
+li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+  height: 100%;
+}
+
+/* Anchor links */
+li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $floral-white;
+  text-align: center;
+  padding: 16px 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  width: 100%;
+  height: 100%;
+  position: relative; /* To position the underline */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Hover Effects */
+li:hover {
+  background-color: $eerie-black; /* Apply hover effect to entire li */
+}
+
+li a:hover {
+  color: $engineering-orange; /* Change text color on hover */
+  transform: translateY(-3px); /* Slight lift on hover for a 3D effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to give depth */
+}
+
+/* Subtle Underline Effect */
+li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: $engineering-orange;
+  bottom: 0;
+  left: 50%;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+/* Increase width of underline on hover */
+li a:hover::after {
+  width: 100%; /* Full width underline on hover */
+}
+
+/* Apply underline to icon as well */
+li a i {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 1.5rem; /* Adjust the size of the icons */
+  transition: color 0.3s ease-in-out; /* Smooth transition for icon color */
+}
+
+/* Hover effect for icons */
+li a:hover i {
+  color: $engineering-orange; /* Change icon color on hover */
+}
+
+/* Active Link Styling */
+.active-link {
+  font-weight: bold;
+  color: $engineering-orange;
+  text-shadow: 0px 0px 5px rgba(186, 18, 0, 0.5); /* Glowing effect */
+}
+
+/* For mobile view - make sure text is hidden completely when scale is low */
+@media (max-width: 768px) {
+  ul {
+    justify-content: flex-start; /* Align items to the left on mobile */
+  }
+
+  li {
+    width: auto; /* Each li item should take the width of the icon */
+  }
+
+  /* Hide text completely on small screens */
+  .nav-text {
+    display: none; /* Completely hide text */
+  }
+
+  /* Icons only, larger on mobile */
+  li a i {
+    margin-right: 0; /* Remove margin between icon and text */
+    font-size: 2rem; /* Larger icon size */
+  }
+}
+
+/* Optional: if you want an even smaller breakpoint for very compact mobile views */
+@media (max-width: 480px) {
+  li a i {
+    font-size: 2.2rem; /* Even larger icons on very small screens */
+  }
+}

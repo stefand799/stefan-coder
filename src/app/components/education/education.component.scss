@@ -1,0 +1,223 @@
+/* Color Palette */
+$black: #040505ff;
+$engineering-orange: #ba1200ff;
+$floral-white: #FCF9F2ff;
+$taupe-gray: #8d8d92ff;
+$eerie-black: #151A1Aff;
+
+/* Education Section Styling */
+.education-section {
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background for contrast */
+    text-align: center;
+    min-height: 100vh; /* Ensures it takes up at least the full viewport height */
+    color: $floral-white; /* Text color matches the palette */
+}
+
+/* Animation to fade in and slide up the cards */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 2.8rem; /* Larger title for visibility */
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: $eerie-black;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+}
+
+/* Education Container (Card Layout) */
+.education-container {
+    display: flex;
+    flex-wrap: wrap; /* Cards will wrap on smaller screens */
+    gap: 30px; /* Spacious gap for aesthetics */
+    justify-content: center;
+    padding: 0 10px;
+}
+
+/* Education Card Styling */
+.education-card {
+    background-color: $floral-white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Image on top and content below */
+    width: 280px; /* Card width */
+    padding: 20px;
+    transition: transform 0.3s ease;
+    opacity: 0; /* Initial opacity for animation */
+    animation: fadeInUp 0.6s forwards; /* Animation to fade and slide up */
+}
+
+.education-card:nth-child(1) {
+    animation-delay: 0.4s; /* Animation delay for the first card */
+}
+
+.education-card:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.education-card:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.education-card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.education-image img {
+    width: 100%;
+    height: 180px; /* Image height */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space between image and text */
+}
+
+.education-content {
+    text-align: left;
+}
+
+.education-title {
+    font-size: 1.7rem; /* Slightly larger title for cards */
+    font-weight: bold;
+    color: $eerie-black;
+    margin-bottom: 12px;
+}
+
+.education-dates {
+    font-size: 1.1rem;
+    color: $taupe-gray;
+    margin-bottom: 15px;
+}
+
+.education-description {
+    font-size: 1rem;
+    color: $black;
+    margin-bottom: 20px;
+}
+
+.education-link {
+    font-size: 1.1rem;
+    color: $engineering-orange;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.education-link:hover {
+    color: #f8b400; /* Accent color on hover */
+}
+
+/* Additional Courses & Certifications Cards */
+.courses-section, .certifications-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.courses-title, .certifications-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: $eerie-black;
+}
+
+.courses-list, .certifications-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.courses-list li, .certifications-list li {
+    margin: 10px 0;
+}
+
+.courses-list a, .certifications-list a {
+    font-size: 1.1rem;
+    color: $engineering-orange;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.courses-list a:hover, .certifications-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .education-container {
+        gap: 20px; /* Reduce gap on medium screens */
+    }
+
+    .education-card {
+        width: 220px; /* Reduce card width on medium screens */
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 2.4rem; /* Smaller title */
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .education-container {
+        gap: 15px; /* Smaller gap */
+    }
+
+    .education-card {
+        width: 100%; /* Cards take up full width on smaller screens */
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .education-link {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-card {
+        width: 100%; /* Full width cards on very small screens */
+        padding: 20px;
+    }
+
+    .education-title {
+        font-size: 1.5rem;
+    }
+
+    .education-dates {
+        font-size: 1rem;
+    }
+
+    .education-description {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .courses-title, .certifications-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .courses-list a, .certifications-list a {
+        font-size: 1rem;
+    }
+}

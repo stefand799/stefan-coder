@@ -1,0 +1,81 @@
+/* Contact Section Styling */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    height: 82.7vh; /* Take up the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+}
+
+/* Title */
+.contact-section .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #040505;
+}
+
+/* Contact Cards Layout */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    max-width: 800px; /* Prevents spreading too far */
+}
+
+/* Individual Contact Card */
+.contact-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px; /* Same size as education cards */
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Full Card Hover Effect */
+.contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styling */
+.contact-icon img {
+    width: 50px; /* Icon size */
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Contact Text Content */
+.contact-content {
+    text-align: center;
+}
+
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #040505;
+    margin-bottom: 10px;
+}
+
+/* Links */
+.contact-link {
+    font-size: 1rem;
+    color: #ba1200;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-link:hover {
+    color: #f8b400;
+    text-decoration: underline;
+}

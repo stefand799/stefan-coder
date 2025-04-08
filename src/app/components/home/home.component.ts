@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       error: (error) => {
         console.error('Error loading quotes:', error);
         // Fallback to default quote if there's an error
-        this.quote = '"The future belongs to those who believe in the beauty of their dreams." – Eleanor Roosevelt';
+        this.quote = '"To see something where there is nothing — that\'s what separates God from a man. - ';
       }
     });
   }

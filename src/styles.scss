@@ -5,23 +5,32 @@ $floral-white: #FCF9F2ff;
 $taupe-gray: #8d8d92ff;
 $eerie-black: #151A1Aff;
 
+/* General Style for HTML and Body */
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+    height: 100%;  /* Ensure full height for the entire page */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent unwanted scroll */
+    scroll-behavior: smooth; /* Smooth scrolling */
+  }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-app-root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  // html, body {
+  //   height: 100%;
+  //   margin: 0;
+  //   padding: 0;
+  //   overflow-x: hidden; /* Prevent horizontal scrolling */
+  // }
+  
+  // body {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  
+  // app-root {
+  //   display: flex;
+  //   flex-direction: column;
+  //   min-height: 100vh;
+  // }
   
   /* Prevent the scroll bar from appearing */
   * {

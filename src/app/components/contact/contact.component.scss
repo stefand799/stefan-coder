@@ -8,7 +8,7 @@ $eerie-black: #151A1Aff;
 /* Contact Section Styling */
 .contact-section {
     position: relative;
-    min-height: 82.7vh;
+    min-height: 100vh; /* Changed from 82.7vh to 100vh */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,8 @@ $eerie-black: #151A1Aff;
     color: $floral-white;
     padding: 60px 20px;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 /* Background pattern effect (optional) */
@@ -76,6 +78,7 @@ $eerie-black: #151A1Aff;
     animation: fadeInUp 0.8s ease forwards;
     opacity: 0;
     animation-delay: 0.4s;
+    width: 100%; /* Ensure container takes full width */
 }
 
 /* Individual Contact Card */
@@ -202,6 +205,7 @@ $eerie-black: #151A1Aff;
 @media (max-width: 768px) {
     .contact-section {
         padding: 40px 15px;
+        min-height: 100vh; /* Maintain full height on smaller screens */
     }
 
     .section-title {
@@ -240,6 +244,10 @@ $eerie-black: #151A1Aff;
 }
 
 @media (max-width: 480px) {
+    .contact-section {
+        padding-bottom: 60px; /* Add more padding at the bottom for very small screens */
+    }
+    
     .section-title {
         font-size: 1.8rem;
         margin-bottom: 25px;

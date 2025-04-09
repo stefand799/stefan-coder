@@ -1,7 +1,56 @@
 <section id="experience" class="experience-section">
     <h1 class="section-title">Experience</h1>
     <div class="experience-container">
-        <!-- This is a placeholder. You can add your experience items here -->
-        <p>My professional experience will be displayed here.</p>
+      <!-- Loop through each category -->
+      <div *ngFor="let category of categories; let i = index" class="experience-card" 
+           [class.expanded]="category.expanded" 
+           (click)="toggleCard(i)">
+        
+        <!-- Card Front - Shown when not expanded -->
+        <div class="card-front">
+          <div class="category-icon">
+            <i class="fas {{category.icon}}"></i>
+          </div>
+          <h2 class="category-title">{{category.name}}</h2>
+          <div class="category-description">{{category.shortDescription}}</div>
+          <div class="expand-hint">Click to expand</div>
+        </div>
+        
+        <!-- Card Back - Shown when expanded -->
+        <div class="card-back">
+          <div class="close-button" (click)="toggleCard(i, $event)">
+            <i class="fas fa-times"></i>
+          </div>
+          <h2 class="category-title">{{category.name}}</h2>
+          <p class="category-full-description">{{category.fullDescription}}</p>
+          
+          <!-- Experience items (jobs/projects) -->
+          <div class="experience-items">
+            <div *ngFor="let item of category.items" class="experience-item">
+              <div class="item-header">
+                <h3 class="item-title">{{item.title}}</h3>
+                <div class="item-organization">{{item.organization}}</div>
+                <div class="item-duration">{{item.period}}</div>
+              </div>
+              <div class="item-description">{{item.description}}</div>
+              
+              <!-- Skills badges -->
+              <div class="skills-container">
+                <span *ngFor="let skill of item.skills" class="skill-badge">{{skill}}</span>
+              </div>
+              
+              <!-- Link (if present) -->
+              <a *ngIf="item.link" [href]="item.link" target="_blank" class="item-link">
+                <i class="fas {{item.linkIcon}}"></i> {{item.linkText}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Empty state if no categories are available -->
+      <div *ngIf="categories.length === 0" class="empty-state">
+        <p>Experience data is loading...</p>
+      </div>
     </div>
-</section>
+  </section>

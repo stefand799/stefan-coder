@@ -18,23 +18,31 @@ $eerie-black: #151A1Aff;
     padding: 20px;
     background-color: $eerie-black; /* Dark background to complement the text and video */
     transition: background-color 0.3s ease-in-out;
-
-    /* Smooth Scaling and fading background effect */
-    &:hover .overlay {
-        background-color: rgba(0, 0, 0, 0.6);
-    }
 }
 
-/* Overlay Effect */
+/* Overlay Effect with Pulse Animation */
 .home-section .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Slightly darkened overlay */
+    background-color: rgba(0, 0, 0, 0.4); /* Base overlay darkness */
     z-index: 1;
-    transition: background-color 0.3s ease-in-out; /* Smooth transition on hover */
+    animation: pulse 8s infinite alternate; /* Smooth pulse animation */
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5); /* Slightly darker */
+    }
+    50% {
+        background-color: rgba(0, 0, 0, 0.3); /* Slightly lighter */
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.5); /* Back to darker */
+    }
 }
 
 /* Content Box */

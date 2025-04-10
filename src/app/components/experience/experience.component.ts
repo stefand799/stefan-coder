@@ -40,16 +40,6 @@ export class ExperienceComponent {
       expanded: false,
       items: [
         {
-          title: 'Frontend Developer',
-          organization: 'Self-Employed',
-          period: 'January 2023 - Present',
-          description: 'Developed responsive web applications using Angular and TypeScript. Implemented modern UI/UX designs and optimized for performance across devices.',
-          skills: ['Angular', 'TypeScript', 'SCSS', 'RxJS', 'Responsive Design'],
-          link: 'https://github.com/stefand799/stefan-coder',
-          linkIcon: 'fa-github',
-          linkText: 'View Project'
-        },
-        {
           title: 'Portfolio Website',
           organization: 'Personal Project',
           period: 'February 2024',
@@ -58,7 +48,18 @@ export class ExperienceComponent {
           link: 'https://github.com/stefand799/stefan-coder',
           linkIcon: 'fa-github',
           linkText: 'View Repository'
+        },
+        {
+          title: 'Memorizing Pairing Game',
+          organization: 'University Project',
+          period: 'April 2025 - April 2025',
+          description: 'Developed a cross-platform memorizing pairing game using C# with MVVM architecture and Avalonia UI. The project utilizes responsive, user-friendly design principles and demonstrates a clean separation of concerns between the UI and business logic.',
+          skills: ['C#', 'MVVM', 'Avalonia UI', 'Cross-Platform Development', 'UI/UX Design'],
+          link: 'https://github.com/stefand799/memorize-game', 
+          linkIcon: 'fa-github',
+          linkText: 'View Repository'
         }
+        
       ]
     },
     {
@@ -69,14 +70,14 @@ export class ExperienceComponent {
       expanded: false,
       items: [
         {
-          title: 'RESTful API Development',
-          organization: 'Personal Project',
-          period: 'March 2023 - May 2023',
-          description: 'Designed and implemented RESTful APIs using Node.js and Express, with a focus on performance and security. Integrated with MongoDB for data persistence.',
-          skills: ['Node.js', 'Express', 'MongoDB', 'REST API', 'JWT Authentication'],
-          link: 'https://github.com/stefand799',
+          title: 'Multiplayer Game Backend Development — Miauhem',
+          organization: 'University Project',
+          period: 'October 2024 - January 2025',
+          description: 'Developed the backend for a retro-inspired multiplayer game using modern C++. Handled HTTP request routing with Crow and CPR, and implemented robust database management functions with SQLite ORM. Contributed to user data handling, lobby system logic, and server-side game mechanics.',
+          skills: ['Modern C++', 'Crow', 'CPR', 'SQLite ORM', 'HTTP', 'Client-Server Architecture'],
+          link: 'https://github.com/stefand799/MiauHem',
           linkIcon: 'fa-github',
-          linkText: 'View Projects'
+          linkText: 'View Project'
         }
       ]
     },
@@ -87,16 +88,16 @@ export class ExperienceComponent {
       fullDescription: 'My work in artificial intelligence and machine learning focuses on creating practical solutions to real-world problems. I have experience with various ML frameworks and techniques, with a particular interest in computer vision and natural language processing.',
       expanded: false,
       items: [
-        {
-          title: 'Machine Learning Engineer',
-          organization: 'Research Project',
-          period: 'October 2023 - December 2023',
-          description: 'Implemented machine learning models for image recognition using TensorFlow and Keras. Achieved 92% accuracy on the test dataset after fine-tuning.',
-          skills: ['Python', 'TensorFlow', 'Keras', 'Computer Vision', 'Data Preprocessing'],
-          link: 'https://github.com/stefand799',
-          linkIcon: 'fa-github',
-          linkText: 'View Project'
-        }
+        // {
+        //   title: 'Machine Learning Engineer',
+        //   organization: 'Research Project',
+        //   period: 'October 2023 - December 2023',
+        //   description: 'Implemented machine learning models for image recognition using TensorFlow and Keras. Achieved 92% accuracy on the test dataset after fine-tuning.',
+        //   skills: ['Python', 'TensorFlow', 'Keras', 'Computer Vision', 'Data Preprocessing'],
+        //   link: 'https://github.com/stefand799',
+        //   linkIcon: 'fa-github',
+        //   linkText: 'View Project'
+        // }
       ]
     },
     {
@@ -106,16 +107,16 @@ export class ExperienceComponent {
       fullDescription: 'My DevOps experience includes automating build and deployment pipelines, container orchestration, and infrastructure management. I focus on creating efficient workflows that enable continuous integration and delivery.',
       expanded: false,
       items: [
-        {
-          title: 'CI/CD Pipeline Implementation',
-          organization: 'Self-Employed',
-          period: 'June 2023 - August 2023',
-          description: 'Set up CI/CD pipelines using GitHub Actions for automated testing and deployment of web applications. Implemented Docker containerization for consistent environments.',
-          skills: ['Docker', 'GitHub Actions', 'CI/CD', 'Shell Scripting', 'AWS'],
-          link: 'https://github.com/stefand799',
-          linkIcon: 'fa-github',
-          linkText: 'View Repositories'
-        }
+        // {
+        //   title: 'CI/CD Pipeline Implementation',
+        //   organization: 'Self-Employed',
+        //   period: 'June 2023 - August 2023',
+        //   description: 'Set up CI/CD pipelines using GitHub Actions for automated testing and deployment of web applications. Implemented Docker containerization for consistent environments.',
+        //   skills: ['Docker', 'GitHub Actions', 'CI/CD', 'Shell Scripting', 'AWS'],
+        //   link: 'https://github.com/stefand799',
+        //   linkIcon: 'fa-github',
+        //   linkText: 'View Repositories'
+        // }
       ]
     },
     {
@@ -125,16 +126,16 @@ export class ExperienceComponent {
       fullDescription: 'My work with IoT and embedded systems involves creating solutions that bridge the physical and digital worlds. I specialize in sensor integration, low-power systems, and secure communication protocols.',
       expanded: false,
       items: [
-        {
-          title: 'Smart Home Automation',
-          organization: 'Personal Project',
-          period: 'July 2023 - Present',
-          description: 'Designed and built a home automation system using ESP32 microcontrollers and MQTT protocol. Implemented features like remote monitoring and control of household appliances.',
-          skills: ['C/C++', 'ESP32', 'MQTT', 'Embedded Systems', 'IoT Protocols'],
-          link: 'https://github.com/stefand799',
-          linkIcon: 'fa-github',
-          linkText: 'View Project'
-        }
+        // {
+        //   title: 'Smart Home Automation',
+        //   organization: 'Personal Project',
+        //   period: 'July 2023 - Present',
+        //   description: 'Designed and built a home automation system using ESP32 microcontrollers and MQTT protocol. Implemented features like remote monitoring and control of household appliances.',
+        //   skills: ['C/C++', 'ESP32', 'MQTT', 'Embedded Systems', 'IoT Protocols'],
+        //   link: 'https://github.com/stefand799',
+        //   linkIcon: 'fa-github',
+        //   linkText: 'View Project'
+        // }
       ]
     },
     {
@@ -145,14 +146,14 @@ export class ExperienceComponent {
       expanded: false,
       items: [
         {
-          title: 'Security Analyst',
-          organization: 'Self-Study',
-          period: 'September 2023 - Present',
-          description: 'Conducted security assessments and vulnerability scanning of web applications. Implemented secure coding practices and performed code reviews to identify potential security issues.',
-          skills: ['Penetration Testing', 'OWASP', 'Secure Coding', 'Network Security', 'Encryption'],
-          link: 'https://github.com/stefand799',
-          linkIcon: 'fa-github',
-          linkText: 'View Projects'
+          "title": "Cryptography Researcher",
+          "organization": "Personal Project",
+          "period": "September 2024 - Present",
+          "description": "Developed Arcana Encryption System, a multi-layered custom encryption algorithm combining character substitution and matrix transformation techniques. The project demonstrates novel approaches to symmetric encryption with an emphasis on mathematical transformations and custom cryptographic primitives.",
+          "skills": ["Cryptography", "Algorithm Design", "Python Development", "Matrix Operations", "Data Security"],
+          "link": "https://github.com/stefand799/arcana-encryption",
+          "linkIcon": "fa-github",
+          "linkText": "View Project"
         }
       ]
     }

@@ -1,9 +1,11 @@
-/* Color Palette */
-$black: #040505ff;
-$engineering-orange: #ba1200ff;
-$floral-white: #FCF9F2ff;
-$taupe-gray: #8d8d92ff;
-$eerie-black: #151A1Aff;
+/* Enhanced Color Palette */
+$black: #0a0c0cff; /* Slightly richer black with a hint of blue */
+$engineering-orange: #d13b2eff; /* Brighter, more vibrant orange-red */
+$floral-white: #FFF8E8ff; /* Warmer, creamier white */
+$taupe-gray: #9a9aa3ff; /* Lighter, more silvery gray */
+$eerie-black: #1c2326ff; /* Deeper, richer dark background with blue undertones */
+$card-bg: rgba(255, 248, 232, 0.97); /* Slightly transparent card background */
+$hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effects */
 
 /* Make the entire header sticky */
 header {
@@ -12,9 +14,19 @@ header {
   background-color: $black;
   z-index: 1000;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
   height: 5.6vh;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  
+  /* Add subtle gradient background */
+  background-image: linear-gradient(
+    to bottom,
+    lighten($black, 3%) 0%,
+    $black 100%
+  );
+  
+  /* Add subtle border at bottom */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* Navbar List Styling */
@@ -23,12 +35,12 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: $black;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  transition: all 0.3s ease; /* Smooth transition */
+  transition: all 0.3s ease;
 }
 
 /* Flexbox on li */
@@ -56,18 +68,25 @@ li a {
   width: 100%;
   height: 100%;
   position: relative; /* To position the underline */
-  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+  transition: all 0.3s ease-in-out;
 }
 
 /* Hover Effects */
 li:hover {
-  background-color: $eerie-black; /* Apply hover effect to entire li */
+  background-color: lighten($eerie-black, 3%); /* Slightly lighter on hover */
+  
+  /* Add subtle radial gradient on hover */
+  background-image: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 70%
+  );
 }
 
 li a:hover {
   color: $engineering-orange; /* Change text color on hover */
   transform: translateY(-3px); /* Slight lift on hover for a 3D effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to give depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
 }
 
 /* Subtle Underline Effect */
@@ -81,6 +100,8 @@ li a::after {
   left: 50%;
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
+  box-shadow: 0 1px 3px rgba(209, 59, 46, 0.3); /* Add subtle glow to underline */
+  border-radius: 1px; /* Slightly round the underline */
 }
 
 /* Increase width of underline on hover */
@@ -90,48 +111,66 @@ li a:hover::after {
 
 /* Apply underline to icon as well */
 li a i {
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 1.5rem; /* Adjust the size of the icons */
-  transition: color 0.3s ease-in-out; /* Smooth transition for icon color */
+  margin-right: 8px;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add subtle text shadow to icons */
 }
 
 /* Hover effect for icons */
 li a:hover i {
-  color: $engineering-orange; /* Change icon color on hover */
+  color: $engineering-orange;
+  transform: scale(1.1); /* Slightly enlarge icons on hover */
 }
 
 /* Active Link Styling */
 .active-link {
   font-weight: bold;
   color: $engineering-orange;
-  text-shadow: 0px 0px 5px rgba(186, 18, 0, 0.5); /* Glowing effect */
+  text-shadow: 0 0 6px rgba(209, 59, 46, 0.35); /* Enhanced glowing effect */
+}
+
+.active-link i {
+  color: $engineering-orange; /* Make sure icons also have the active color */
+}
+
+/* Active link gets a permanent underline */
+li a.active-link::after {
+  width: 100%; /* Full width underline for active link */
+  background-color: $engineering-orange;
+  opacity: 0.8;
 }
 
 /* For mobile view - make sure text is hidden completely when scale is low */
 @media (max-width: 768px) {
   ul {
-    justify-content: flex-start; /* Align items to the left on mobile */
+    justify-content: flex-start;
   }
 
   li {
-    width: auto; /* Each li item should take the width of the icon */
+    width: auto;
   }
 
   /* Hide text completely on small screens */
   .nav-text {
-    display: none; /* Completely hide text */
+    display: none;
   }
 
   /* Icons only, larger on mobile */
   li a i {
-    margin-right: 0; /* Remove margin between icon and text */
-    font-size: 2rem; /* Larger icon size */
+    margin-right: 0;
+    font-size: 2rem;
+  }
+  
+  /* Make active icon more pronounced on mobile */
+  li a.active-link i {
+    transform: scale(1.1);
   }
 }
 
 /* Optional: if you want an even smaller breakpoint for very compact mobile views */
 @media (max-width: 480px) {
   li a i {
-    font-size: 2.2rem; /* Even larger icons on very small screens */
+    font-size: 2.2rem;
   }
 }

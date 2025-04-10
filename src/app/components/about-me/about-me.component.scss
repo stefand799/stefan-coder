@@ -1,9 +1,11 @@
-/* Color Palette */
-$black: #040505ff;
-$engineering-orange: #ba1200ff;
-$floral-white: #FCF9F2ff;
-$taupe-gray: #8d8d92ff;
-$eerie-black: #151A1Aff;
+/* Enhanced Color Palette */
+$black: #0a0c0cff; /* Slightly richer black with a hint of blue */
+$engineering-orange: #d13b2eff; /* Brighter, more vibrant orange-red */
+$floral-white: #FFF8E8ff; /* Warmer, creamier white */
+$taupe-gray: #9a9aa3ff; /* Lighter, more silvery gray */
+$eerie-black: #1c2326ff; /* Deeper, richer dark background with blue undertones */
+$card-bg: rgba(255, 248, 232, 0.97); /* Slightly transparent card background */
+$hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effects */
 
 /* About Me Section */
 .about-section {
@@ -20,6 +22,12 @@ $eerie-black: #151A1Aff;
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  /* Add subtle gradient background */
+  background-image: linear-gradient(to bottom right, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0) 40%, 
+    rgba(0, 0, 0, 0.05) 60%, 
+    rgba(0, 0, 0, 0.1) 100%);
 
   .overlay {
     position: absolute;
@@ -27,7 +35,7 @@ $eerie-black: #151A1Aff;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(21, 26, 26, 0.8); // dark overlay to match theme
+    background-color: rgba(28, 35, 38, 0.85); // dark overlay using new eerie-black
     z-index: 1;
     backdrop-filter: blur(2px);
   }
@@ -38,6 +46,11 @@ $eerie-black: #151A1Aff;
     max-width: 900px;
     animation: fadeInUp 0.8s ease forwards;
     opacity: 0;
+    background-color: rgba(10, 12, 12, 0.3); /* Subtle background for content */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .section-title {
@@ -49,6 +62,22 @@ $eerie-black: #151A1Aff;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.2s;
     opacity: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Enhanced text shadow */
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: $engineering-orange;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(209, 59, 46, 0.3);
+    }
   }
 
   .bio {
@@ -61,6 +90,13 @@ $eerie-black: #151A1Aff;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.4s;
     opacity: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    
+    /* Add subtle highlighting to important phrases */
+    strong, em {
+      color: lighten($engineering-orange, 10%);
+      font-weight: 600;
+    }
   }
 
   .quote {
@@ -74,6 +110,28 @@ $eerie-black: #151A1Aff;
     opacity: 0;
     text-shadow: 0 0 4px rgba($engineering-orange, 0.4);
     margin-top: 20px;
+    padding: 10px;
+    border-left: 3px solid $engineering-orange;
+    background-color: rgba(209, 59, 46, 0.05);
+    border-radius: 0 5px 5px 0;
+    
+    &::before {
+      content: '"';
+      font-size: 1.8rem;
+      vertical-align: bottom;
+      line-height: 0;
+      position: relative;
+      top: 5px;
+    }
+    
+    &::after {
+      content: '"';
+      font-size: 1.8rem;
+      vertical-align: bottom;
+      line-height: 0;
+      position: relative;
+      top: 5px;
+    }
   }
 }
 
@@ -94,16 +152,61 @@ $eerie-black: #151A1Aff;
   .about-section {
     padding: 40px 15px;
 
+    .content {
+      padding: 20px;
+      max-width: 95%;
+    }
+
     .section-title {
       font-size: 2.2rem;
+      
+      &::after {
+        width: 60px;
+        height: 2px;
+      }
     }
 
     .bio {
       font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     .quote {
       font-size: 1rem;
+      padding: 8px;
+      border-left-width: 2px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    .content {
+      padding: 15px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      
+      &::after {
+        width: 50px;
+      }
+    }
+    
+    .bio {
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    
+    .quote {
+      font-size: 0.9rem;
+      padding: 6px;
+      
+      &::before, &::after {
+        font-size: 1.4rem;
+      }
     }
   }
 }

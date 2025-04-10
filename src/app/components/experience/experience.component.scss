@@ -1,9 +1,12 @@
-/* Color Palette */
-$black: #040505ff;
-$engineering-orange: #ba1200ff;
-$floral-white: #FCF9F2ff;
-$taupe-gray: #8d8d92ff;
-$eerie-black: #151A1Aff;
+/* Enhanced Color Palette */
+$black: #0a0c0cff; /* Slightly richer black with a hint of blue */
+$engineering-orange: #d13b2eff; /* Brighter, more vibrant orange-red */
+$floral-white: #FFF8E8ff; /* Warmer, creamier white */
+$taupe-gray: #9a9aa3ff; /* Lighter, more silvery gray */
+$eerie-black: #1c2326ff; /* Deeper, richer dark background with blue undertones */
+$card-bg: #121a1d; /* New color for card backgrounds - dark with a hint of blue */
+$item-bg: rgba(34, 42, 46, 0.85); /* New color for experience items - slightly blue-tinted */
+$hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effects */
 
 /* Experience Section */
 .experience-section {
@@ -17,6 +20,12 @@ $eerie-black: #151A1Aff;
   padding: 60px 20px;
   background-color: $eerie-black;
   overflow: hidden;
+  /* Add subtle texture/gradient */
+  background-image: linear-gradient(to bottom right, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0) 40%, 
+    rgba(0, 0, 0, 0.05) 60%, 
+    rgba(0, 0, 0, 0.1) 100%);
 }
 
 .section-title {
@@ -27,6 +36,7 @@ $eerie-black: #151A1Aff;
   animation: fadeInUp 0.8s ease forwards;
   animation-delay: 0.2s;
   opacity: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Add subtle text shadow */
 }
 
 .experience-container {
@@ -45,19 +55,26 @@ $eerie-black: #151A1Aff;
 /* Experience Card */
 .experience-card {
   position: relative;
-  width: 280px;
+  width: calc(33.333% - 20px); /* Three cards per row by default */
+  max-width: 280px;
   height: 280px;
-  background-color: $black;
+  background-color: $card-bg;
   color: $floral-white;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
+  /* Add subtle gradient */
+  background-image: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0) 60%);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(186, 18, 0, 0.3);
+    box-shadow: 0 12px 24px $hover-shadow;
+    background-color: lighten($card-bg, 3%); /* Lighten bg slightly on hover */
   }
   
   &.expanded {
@@ -67,19 +84,31 @@ $eerie-black: #151A1Aff;
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 800px;
-    height: 80vh;
-    max-height: 700px;
+    height: 70vh; /* Fixed height for the popup */
     z-index: 1000;
     cursor: default;
-    overflow-y: auto;
+    overflow: hidden; /* No overflow on the card itself */
     margin: 0;
+    background-color: $card-bg; /* Consistent background color */
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35); /* Enhanced shadow for expanded */
+    display: flex;
+    flex-direction: column;
+    
+    /* Apply consistent background to the entire popup */
+    background-image: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.03) 0%, 
+      rgba(255, 255, 255, 0) 60%);
     
     .card-front {
       display: none;
     }
     
     .card-back {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Full height of expanded card */
+      overflow: hidden; /* No overflow */
+      background-color: transparent; /* Transparent background to let card bg show through */
     }
   }
 }
@@ -103,9 +132,10 @@ $eerie-black: #151A1Aff;
     color: $engineering-orange;
     width: 100%;
     text-align: center;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Add icon shadow */
     
     i {
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
   }
   
@@ -115,6 +145,7 @@ $eerie-black: #151A1Aff;
     color: $floral-white;
     width: 100%;
     text-align: center;
+    font-weight: 600; /* Slightly bolder */
   }
   
   .category-description {
@@ -136,12 +167,14 @@ $eerie-black: #151A1Aff;
     width: 100%;
     text-align: center;
     left: 0;
+    font-weight: 500; /* Slightly bolder */
   }
 }
 
 .experience-card:hover {
   .category-icon i {
     transform: scale(1.2);
+    color: lighten($engineering-orange, 10%); /* Brighter color on hover */
   }
   
   .expand-hint {
@@ -154,31 +187,40 @@ $eerie-black: #151A1Aff;
   display: none;
   height: 100%;
   width: 100%;
-  padding: 30px;
-  overflow-y: auto;
+  padding: 25px 30px;
   text-align: center;
+  
+  /* Header area with title and description */
+  .popup-header {
+    padding-bottom: 15px;
+    position: relative;
+    background-color: transparent; /* Ensure header has transparent background */
+  }
   
   .close-button {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 30px;
-    height: 30px;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background-color: $engineering-orange;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* Add shadow */
+    z-index: 10; /* Ensure it's above other content */
     
     &:hover {
       transform: rotate(90deg);
+      background-color: lighten($engineering-orange, 10%); /* Brighter on hover */
     }
     
     i {
       color: $floral-white;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
   
@@ -188,41 +230,72 @@ $eerie-black: #151A1Aff;
     margin-bottom: 15px;
     text-align: center;
     padding-top: 10px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add subtle text shadow */
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .category-full-description {
     font-size: 1rem;
     color: $taupe-gray;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 1.5;
     text-align: center;
-    max-width: 80%;
+    max-width: 85%;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-/* Experience Items */
+/* Experience Items Container - This is what scrolls */
 .experience-items {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
   align-items: center;
   width: 100%;
+  padding: 5px 10px 20px;
+  overflow-y: auto; /* This enables scrolling */
+  flex-grow: 1; /* Take up remaining space */
+  background-color: transparent; /* Ensure scrollable area has transparent background */
+  
+  /* Customize scrollbar for webkit browsers */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(209, 59, 46, 0.5);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(209, 59, 46, 0.7);
+  }
 }
 
 .experience-item {
-  background-color: rgba(21, 26, 26, 0.8);
+  background-color: $item-bg;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px; /* Slightly more rounded */
   border-left: 4px solid $engineering-orange;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   text-align: center;
   width: 85%;
+  max-width: 600px; /* Add max-width to ensure proper scaling */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add shadow */
   
   &:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(186, 18, 0, 0.3);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+    border-left-color: lighten($engineering-orange, 10%); /* Brighter border on hover */
+    background-color: rgba(34, 42, 46, 0.9); /* Slightly darker background on hover */
   }
   
   .item-header {
@@ -234,6 +307,7 @@ $eerie-black: #151A1Aff;
     font-size: 1.2rem;
     color: $floral-white;
     margin-bottom: 5px;
+    font-weight: 600; /* Slightly bolder */
   }
   
   .item-organization {
@@ -265,12 +339,18 @@ $eerie-black: #151A1Aff;
   }
   
   .skill-badge {
-    background-color: $black;
+    background-color: rgba(10, 12, 12, 0.7);
     color: $engineering-orange;
     font-size: 0.8rem;
     padding: 5px 10px;
     border-radius: 20px;
-    border: 1px solid $engineering-orange;
+    border: 1px solid rgba($engineering-orange, 0.6);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba($engineering-orange, 0.15);
+      transform: translateY(-2px);
+    }
   }
   
   .item-link {
@@ -279,13 +359,14 @@ $eerie-black: #151A1Aff;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     text-align: center;
     width: 100%;
     
     &:hover {
-      color: rgba(186, 18, 0, 0.8);
+      color: lighten($engineering-orange, 15%);
       text-decoration: underline;
+      transform: translateY(-2px);
     }
     
     i {
@@ -310,8 +391,9 @@ $eerie-black: #151A1Aff;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(4, 5, 5, 0.9);
+  background-color: rgba(4, 5, 5, 0.92);
   z-index: -1;
+  backdrop-filter: blur(3px); /* Add blur effect */
 }
 
 /* Keyframes */
@@ -327,6 +409,44 @@ $eerie-black: #151A1Aff;
 }
 
 /* Responsive Adjustments */
+/* Large screens (reduce from 3 to 2 columns) */
+@media (max-width: 992px) {
+  .experience-section {
+    padding: 50px 15px;
+  }
+
+  .experience-card {
+    width: calc(50% - 15px); /* Two cards per row */
+    max-width: 260px;
+    height: 260px;
+    
+    &.expanded {
+      width: 90%;
+      max-width: 700px;
+      height: 75vh; /* Adjusted height */
+    }
+  }
+  
+  .card-back {
+    padding: 20px 25px;
+    
+    .category-title {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    
+    .category-full-description {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .experience-items {
+    gap: 15px;
+  }
+}
+
+/* Medium screens */
 @media (max-width: 768px) {
   .experience-section {
     padding: 40px 15px;
@@ -337,19 +457,28 @@ $eerie-black: #151A1Aff;
     margin-bottom: 20px;
   }
   
+  .experience-container {
+    gap: 15px;
+  }
+  
   .experience-card {
-    width: 230px;
+    width: calc(50% - 10px); /* Two cards per row with smaller gap */
+    max-width: 230px;
     height: 230px;
     
     &.expanded {
-      width: 95%;
-      height: 75vh;
-      overflow-y: auto;
-      top: 45%;
+      width: 92%;
+      height: 80vh; /* Slightly taller on medium screens */
+      
+      .card-back {
+        padding: 20px 15px;
+      }
     }
   }
   
   .card-front {
+    padding: 15px;
+    
     .category-icon {
       font-size: 2.5rem;
     }
@@ -364,16 +493,30 @@ $eerie-black: #151A1Aff;
   }
   
   .card-back {
-    padding: 20px;
+    .close-button {
+      width: 28px;
+      height: 28px;
+      top: 5px;
+      right: 5px;
+    }
     
     .category-title {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      max-width: 90%;
+      padding-top: 5px;
     }
     
     .category-full-description {
       font-size: 0.9rem;
+      margin-bottom: 15px;
       max-width: 90%;
     }
+  }
+  
+  .experience-items {
+    gap: 15px;
+    padding: 5px 5px 15px;
   }
   
   .experience-item {
@@ -390,20 +533,76 @@ $eerie-black: #151A1Aff;
   }
 }
 
-@media (max-width: 480px) {
-  .experience-container {
-    gap: 15px;
-  }
-  
+/* Small screens */
+@media (max-width: 640px) {
   .experience-card {
-    width: 160px;
-    height: 160px;
+    width: calc(50% - 8px); /* Two cards per row with smaller gap */
+    max-width: 200px;
+    height: 200px;
     
     &.expanded {
       width: 95%;
-      height: 80vh;
-      border-radius: 10px;
-      top: 45%;
+      height: 75vh;
+    }
+  }
+  
+  .card-front {
+    padding: 12px;
+    
+    .category-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    
+    .category-title {
+      font-size: 1.2rem;
+    }
+    
+    .category-description {
+      font-size: 0.8rem;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .card-back {
+    .popup-header {
+      padding-bottom: 10px;
+    }
+    
+    .close-button {
+      width: 26px;
+      height: 26px;
+    }
+    
+    .category-title {
+      font-size: 1.5rem;
+      max-width: 100%;
+    }
+  }
+  
+  .experience-item {
+    padding: 12px;
+    
+    .item-description {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+  .experience-container {
+    gap: 10px;
+  }
+  
+  .experience-card {
+    width: calc(50% - 5px); /* Two cards per row with very small gap */
+    max-width: 170px;
+    height: 170px;
+    
+    &.expanded {
+      width: 95%;
+      height: 70vh;
     }
   }
   
@@ -411,50 +610,64 @@ $eerie-black: #151A1Aff;
     padding: 10px;
     
     .category-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
     }
     
     .category-title {
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-bottom: 5px;
     }
     
     .category-description {
       font-size: 0.75rem;
       margin-bottom: 10px;
+      line-height: 1.3;
     }
     
     .expand-hint {
       font-size: 0.7rem;
+      bottom: 10px;
     }
   }
   
   .card-back {
-    padding: 15px;
+    padding: 15px 10px;
+    
+    .popup-header {
+      padding-bottom: 5px;
+    }
     
     .close-button {
-      top: 10px;
-      right: 10px;
-      width: 25px;
-      height: 25px;
+      width: 24px;
+      height: 24px;
+      
+      i {
+        font-size: 0.9rem;
+      }
     }
     
     .category-title {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      padding-top: 0;
     }
     
     .category-full-description {
       font-size: 0.85rem;
-      margin-bottom: 20px;
-      max-width: 95%;
+      margin-bottom: 12px;
+      max-width: 100%;
     }
   }
   
+  .experience-items {
+    gap: 12px;
+    padding: 0 5px 10px;
+  }
+  
   .experience-item {
-    padding: 12px;
-    width: 95%;
+    padding: 12px 10px;
+    width: 92%;
     
     .item-title {
       font-size: 1rem;
@@ -466,13 +679,117 @@ $eerie-black: #151A1Aff;
     }
     
     .item-description {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       margin-bottom: 10px;
+      line-height: 1.4;
     }
     
     .skill-badge {
       font-size: 0.7rem;
       padding: 3px 8px;
+    }
+    
+    .skills-container {
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+/* Very small mobile screens */
+@media (max-width: 320px) {
+  .experience-container {
+    gap: 8px;
+  }
+  
+  .experience-card {
+    width: calc(50% - 4px); /* Keep two cards per row with minimal gap */
+    max-width: 150px;
+    height: 150px;
+    
+    &.expanded {
+      width: 95%;
+      height: 80vh;
+    }
+  }
+  
+  .card-front {
+    padding: 8px;
+    
+    .category-icon {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+    
+    .category-title {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+    
+    .category-description {
+      font-size: 0.7rem;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    
+    .expand-hint {
+      font-size: 0.65rem;
+      bottom: 5px;
+    }
+  }
+  
+  .card-back {
+    padding: 12px 8px;
+    
+    .close-button {
+      width: 22px;
+      height: 22px;
+      
+      i {
+        font-size: 0.8rem;
+      }
+    }
+    
+    .category-title {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+    
+    .category-full-description {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .experience-items {
+    gap: 8px;
+  }
+  
+  .experience-item {
+    padding: 8px 6px;
+    width: 95%;
+    
+    .item-title {
+      font-size: 0.9rem;
+    }
+    
+    .item-organization {
+      font-size: 0.75rem;
+    }
+    
+    .item-duration {
+      font-size: 0.7rem;
+    }
+    
+    .item-description {
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    
+    .skill-badge {
+      font-size: 0.65rem;
+      padding: 2px 6px;
     }
   }
 }

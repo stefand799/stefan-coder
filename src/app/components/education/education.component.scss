@@ -1,22 +1,30 @@
-/* Color Palette */
-$black: #040505ff;
-$engineering-orange: #ba1200ff;
-$floral-white: #FCF9F2ff;
-$taupe-gray: #8d8d92ff;
-$eerie-black: #151A1Aff;
+/* Enhanced Color Palette */
+$black: #0a0c0cff; /* Slightly richer black with a hint of blue */
+$engineering-orange: #d13b2eff; /* Brighter, more vibrant orange-red */
+$floral-white: #FFF8E8ff; /* Warmer, creamier white */
+$taupe-gray: #9a9aa3ff; /* Lighter, more silvery gray */
+$eerie-black: #1c2326ff; /* Deeper, richer dark background with blue undertones */
+$card-bg: rgba(255, 248, 232, 0.97); /* Slightly transparent card background */
+$hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effects */
 
 /* Education Section Styling */
 .education-section {
-    padding: 0 20px; /* Remove top/bottom padding */
+    padding: 0 20px;
     background-color: $eerie-black;
     text-align: center;
-    min-height: 100vh; /* Full viewport height */
+    min-height: 100vh;
     color: $floral-white;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
     align-items: center;
+    /* Add subtle gradient background */
+    background-image: linear-gradient(to bottom right, 
+        rgba(0, 0, 0, 0.1) 0%, 
+        rgba(0, 0, 0, 0) 40%, 
+        rgba(0, 0, 0, 0.05) 60%, 
+        rgba(0, 0, 0, 0.1) 100%);
 }
 
 /* Animation to fade in and slide up the cards */
@@ -39,6 +47,7 @@ $eerie-black: #151A1Aff;
     animation: fadeInUp 1s ease forwards;
     opacity: 0;
     animation-delay: 0.2s;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Enhanced text shadow */
 }
 
 /* Education Container (Card Layout) */
@@ -50,12 +59,12 @@ $eerie-black: #151A1Aff;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding-bottom: 20px; /* Add some space at the bottom */
+    padding-bottom: 20px;
 }
 
 /* Card Link - Making the entire card clickable */
 .education-card-link {
-    flex: 1 1 calc(25% - 20px); /* Four cards per row by default */
+    flex: 1 1 calc(25% - 20px);
     max-width: calc(25% - 20px);
     margin-bottom: 15px;
     text-decoration: none;
@@ -90,12 +99,13 @@ $eerie-black: #151A1Aff;
 }
 
 .education-card-link:hover .education-card {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 24px $hover-shadow;
 }
 
 .education-card-link:hover .view-more {
     background-color: $engineering-orange;
     color: $floral-white;
+    transform: translateY(-2px);
 }
 
 .education-card-link:hover .education-image img {
@@ -104,21 +114,38 @@ $eerie-black: #151A1Aff;
 
 /* Education Card Styling */
 .education-card {
-    background-color: $floral-white;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    background-color: $card-bg;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+    border-radius: 10px; /* Slightly more rounded */
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 .education-image {
     width: 100%;
     height: 120px;
     overflow: hidden;
-    background-color: $taupe-gray; /* Fallback background */
+    background-color: $taupe-gray;
+    position: relative;
+}
+
+.education-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    z-index: 1;
 }
 
 .education-image img {
@@ -135,14 +162,20 @@ $eerie-black: #151A1Aff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: $card-bg;
 }
 
 .education-title {
     font-size: 1.2rem;
     font-weight: bold;
-    color: $eerie-black;
+    color: $black;
     margin-bottom: 8px;
     line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.education-card-link:hover .education-title {
+    color: $engineering-orange;
 }
 
 .education-dates {
@@ -170,9 +203,28 @@ $eerie-black: #151A1Aff;
     transition: all 0.3s ease;
     padding: 6px 12px;
     border: 1px solid $engineering-orange;
-    border-radius: 4px;
+    border-radius: 25px;
     margin-top: auto;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.view-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: $engineering-orange;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.view-more:hover::before {
+    width: 100%;
 }
 
 /* Courses List Styling */
@@ -189,6 +241,7 @@ $eerie-black: #151A1Aff;
     padding-left: 15px;
     color: $black;
     font-size: 0.9rem;
+    transition: transform 0.2s ease;
 }
 
 .courses-list li:before {
@@ -200,6 +253,16 @@ $eerie-black: #151A1Aff;
     height: 6px;
     background-color: $engineering-orange;
     border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.courses-list li:hover {
+    transform: translateX(3px);
+}
+
+.courses-list li:hover:before {
+    transform: scale(1.2);
+    background-color: lighten($engineering-orange, 10%);
 }
 
 /* Responsive Adjustments */

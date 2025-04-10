@@ -1,48 +1,43 @@
-/* Color Palette */
-$black: #040505ff;
-$engineering-orange: #ba1200ff;
-$floral-white: #FCF9F2ff;
-$taupe-gray: #8d8d92ff;
-$eerie-black: #151A1Aff;
+/* Enhanced Color Palette */
+$black: #0a0c0cff; /* Slightly richer black with a hint of blue */
+$engineering-orange: #d13b2eff; /* Brighter, more vibrant orange-red */
+$floral-white: #FFF8E8ff; /* Warmer, creamier white */
+$taupe-gray: #9a9aa3ff; /* Lighter, more silvery gray */
+$eerie-black: #1c2326ff; /* Deeper, richer dark background with blue undertones */
+$card-bg: rgba(255, 248, 232, 0.97); /* Slightly transparent card background */
+$hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effects */
 
 /* Home Section */
 .home-section {
     position: relative;
     height: 90.5vh;
-    overflow: hidden; // prevent scrollbars
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: $floral-white;
     padding: 20px;
-    background-color: $eerie-black; /* Dark background to complement the text and video */
+    background-color: $eerie-black;
     transition: background-color 0.3s ease-in-out;
+    /* Add subtle radial gradient for depth */
+    background-image: radial-gradient(
+        circle at center,
+        lighten($eerie-black, 5%) 0%,
+        $eerie-black 70%
+    );
 }
 
-/* Overlay Effect with Pulse Animation */
+/* Overlay - static version without pulse animation */
 .home-section .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Base overlay darkness */
+    background-color: rgba(0, 0, 0, 0.4); /* Static overlay */
     z-index: 1;
-    animation: pulse 8s infinite alternate; /* Smooth pulse animation */
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-    0% {
-        background-color: rgba(0, 0, 0, 0.5); /* Slightly darker */
-    }
-    50% {
-        background-color: rgba(0, 0, 0, 0.3); /* Slightly lighter */
-    }
-    100% {
-        background-color: rgba(0, 0, 0, 0.5); /* Back to darker */
-    }
+    backdrop-filter: blur(1px); /* Add subtle blur */
 }
 
 /* Content Box */
@@ -51,11 +46,17 @@ $eerie-black: #151A1Aff;
     z-index: 2;
     max-width: 800px;
     text-align: center;
+    background-color: rgba(10, 12, 12, 0.2); /* Subtle background for content */
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(3px); /* Add blur effect to make text stand out */
 }
 
 /* Main Heading */
 .home-section .name {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: bold;
     margin-bottom: 15px;
     font-family: 'Roboto', sans-serif;
@@ -64,17 +65,42 @@ $eerie-black: #151A1Aff;
     animation-delay: 0.2s;
     letter-spacing: 2px;
     color: $floral-white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Enhanced text shadow */
+    position: relative;
+    display: inline-block;
+    
+    /* Add subtle underline */
+    &::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        background-color: $engineering-orange;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(209, 59, 46, 0.4);
+    }
 }
 
 /* Interests Text */
 .home-section .interests {
     font-size: 1.6rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-family: 'Roboto', sans-serif;
     opacity: 0;
     animation: fadeInUp 0.8s forwards;
     animation-delay: 0.4s;
-    color: $taupe-gray; /* Subtle color to complement the header */
+    color: $taupe-gray;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    padding: 0 10px;
+    
+    /* Highlight certain keywords */
+    strong {
+        color: lighten($taupe-gray, 15%);
+        font-weight: 500;
+    }
 }
 
 /* Quote */
@@ -82,14 +108,35 @@ $eerie-black: #151A1Aff;
     font-size: 1.3rem;
     font-style: italic;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto 0;
     line-height: 1.6;
     font-family: 'Georgia', serif;
     opacity: 0;
     animation: fadeInUp 0.8s forwards;
     animation-delay: 0.6s;
-    color: $engineering-orange; /* Highlight the quote with the accent color */
-    text-shadow: 0 0 5px $engineering-orange; /* Glow effect for the quote */
+    color: $engineering-orange;
+    text-shadow: 0 0 6px rgba($engineering-orange, 0.4);
+    position: relative;
+    padding: 10px 20px;
+    
+    /* Add quotation marks styling */
+    &::before {
+        content: '"';
+        font-size: 2rem;
+        position: absolute;
+        left: -5px;
+        top: -10px;
+        opacity: 0.8;
+    }
+    
+    &::after {
+        content: '"';
+        font-size: 2rem;
+        position: absolute;
+        right: -5px;
+        bottom: -20px;
+        opacity: 0.8;
+    }
 }
 
 /* Fade In Up Animation */
@@ -113,20 +160,31 @@ $eerie-black: #151A1Aff;
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.75; /* Slightly reduced opacity to not overpower text */
-    pointer-events: none; /* Prevent video from capturing clicks */
+    opacity: 0.75;
+    pointer-events: none;
     transition: opacity 0.3s ease-in-out;
+    filter: brightness(0.8) contrast(1.1); /* Enhance video appearance */
 }
 
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
     .home-section {
-        height: calc(100vh - 5.6vh); /* Adjust for header height */
-        padding: 15px; /* Slightly reduce padding for mobile view */
+        height: calc(100vh - 5.6vh);
+        padding: 15px;
+    }
+    
+    .home-section .content {
+        padding: 25px 15px;
+        max-width: 95%;
     }
 
     .home-section .name {
         font-size: 2.5rem;
+        
+        &::after {
+            width: 60px;
+            height: 2px;
+        }
     }
 
     .home-section .interests {
@@ -135,5 +193,46 @@ $eerie-black: #151A1Aff;
 
     .home-section .quote {
         font-size: 1rem;
+        padding: 8px 15px;
+        
+        &::before, &::after {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .home-section .content {
+        padding: 20px 10px;
+    }
+    
+    .home-section .name {
+        font-size: 2rem;
+        
+        &::after {
+            width: 50px;
+        }
+    }
+    
+    .home-section .interests {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    
+    .home-section .quote {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        
+        &::before {
+            left: -3px;
+            top: -5px;
+            font-size: 1.2rem;
+        }
+        
+        &::after {
+            right: -3px;
+            bottom: -15px;
+            font-size: 1.2rem;
+        }
     }
 }

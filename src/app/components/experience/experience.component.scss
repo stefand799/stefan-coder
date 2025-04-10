@@ -89,15 +89,13 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     cursor: default;
     overflow: hidden; /* No overflow on the card itself */
     margin: 0;
-    background-color: $card-bg; /* Consistent background color */
+    background-color: $card-bg !important; /* Force consistent background color */
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35); /* Enhanced shadow for expanded */
     display: flex;
     flex-direction: column;
     
-    /* Apply consistent background to the entire popup */
-    background-image: linear-gradient(to bottom, 
-      rgba(255, 255, 255, 0.03) 0%, 
-      rgba(255, 255, 255, 0) 60%);
+    /* Remove the gradient background to ensure color consistency */
+    background-image: none;
     
     .card-front {
       display: none;
@@ -108,7 +106,7 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
       flex-direction: column;
       height: 100%; /* Full height of expanded card */
       overflow: hidden; /* No overflow */
-      background-color: transparent; /* Transparent background to let card bg show through */
+      background-color: $card-bg; /* Match parent background exactly */
     }
   }
 }
@@ -187,20 +185,13 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   display: none;
   height: 100%;
   width: 100%;
-  padding: 25px 30px;
-  text-align: center;
-  
-  /* Header area with title and description */
-  .popup-header {
-    padding-bottom: 15px;
-    position: relative;
-    background-color: transparent; /* Ensure header has transparent background */
-  }
+  padding: 0; /* Remove padding from the overall container */
+  background-color: $card-bg; /* Ensure consistent background color */
   
   .close-button {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 15px;
+    right: 15px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -210,12 +201,12 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* Add shadow */
-    z-index: 10; /* Ensure it's above other content */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    z-index: 100; /* Increased z-index to ensure visibility */
     
     &:hover {
       transform: rotate(90deg);
-      background-color: lighten($engineering-orange, 10%); /* Brighter on hover */
+      background-color: lighten($engineering-orange, 10%);
     }
     
     i {
@@ -224,27 +215,31 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     }
   }
   
+  /* Create a header section with consistent padding and background */
   .category-title {
     font-size: 2rem;
     color: $engineering-orange;
-    margin-bottom: 15px;
+    margin: 0 auto 10px auto;
     text-align: center;
-    padding-top: 10px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Add subtle text shadow */
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 20px 20px 5px 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    background-color: $card-bg; /* Match parent background */
   }
   
   .category-full-description {
     font-size: 1rem;
     color: $taupe-gray;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
+    padding: 0 30px;
     line-height: 1.5;
     text-align: center;
-    max-width: 85%;
-    margin-left: auto;
-    margin-right: auto;
+    width: calc(100% - 60px); /* Account for the padding */
+    max-width: 100%;
+    background-color: $card-bg; /* Match parent background */
+    box-sizing: border-box; /* Include padding in width calculation */
+    overflow-wrap: break-word; /* Ensure text wraps properly */
+    word-wrap: break-word; /* For older browsers */
   }
 }
 
@@ -255,10 +250,10 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   gap: 20px;
   align-items: center;
   width: 100%;
-  padding: 5px 10px 20px;
+  padding: 0 10px 20px 10px;
   overflow-y: auto; /* This enables scrolling */
   flex-grow: 1; /* Take up remaining space */
-  background-color: transparent; /* Ensure scrollable area has transparent background */
+  background-color: $card-bg; /* Match parent background exactly */
   
   /* Customize scrollbar for webkit browsers */
   &::-webkit-scrollbar {
@@ -290,6 +285,8 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   width: 85%;
   max-width: 600px; /* Add max-width to ensure proper scaling */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add shadow */
+  margin-left: auto;
+  margin-right: auto; /* Ensure proper centering */
   
   &:hover {
     transform: translateX(5px);
@@ -471,7 +468,16 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
       height: 80vh; /* Slightly taller on medium screens */
       
       .card-back {
-        padding: 20px 15px;
+        padding: 0; /* Keep consistent with main styles */
+        
+        .category-title {
+          padding: 15px 15px 5px 15px;
+          font-size: 1.6rem;
+        }
+        
+        .category-full-description {
+          padding: 0 20px;
+        }
       }
     }
   }
@@ -496,8 +502,8 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     .close-button {
       width: 28px;
       height: 28px;
-      top: 5px;
-      right: 5px;
+      top: 10px;
+      right: 10px;
     }
     
     .category-title {
@@ -565,15 +571,6 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   }
   
   .card-back {
-    .popup-header {
-      padding-bottom: 10px;
-    }
-    
-    .close-button {
-      width: 26px;
-      height: 26px;
-    }
-    
     .category-title {
       font-size: 1.5rem;
       max-width: 100%;
@@ -634,13 +631,11 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   .card-back {
     padding: 15px 10px;
     
-    .popup-header {
-      padding-bottom: 5px;
-    }
-    
     .close-button {
       width: 24px;
       height: 24px;
+      top: 8px;
+      right: 8px;
       
       i {
         font-size: 0.9rem;

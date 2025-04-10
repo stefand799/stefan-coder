@@ -2,6 +2,65 @@
     <div class="overlay"></div>
     <div class="content">
         <h1 class="section-title">About Me</h1>
-        <p class="bio">{{aboutMeText}}</p>
+        
+        <div class="about-container">
+            <!-- Bio Column -->
+            <div class="bio-column">
+                <p class="bio">{{aboutMeText}}</p>
+            </div>
+            
+            <!-- Skills Column -->
+            <div class="skills-column">
+                <h2 class="skills-title">Skills</h2>
+                
+                <!-- Tabs for different skill types -->
+                <div class="skills-tabs">
+                    <div class="tab" 
+                         [class.active]="activeTab === 'technical'"
+                         (click)="setActiveTab('technical')">
+                        Technical
+                    </div>
+                    <div class="tab" 
+                         [class.active]="activeTab === 'general'"
+                         (click)="setActiveTab('general')">
+                        General
+                    </div>
+                </div>
+                
+                <!-- Technical Skills (shown when technical tab is active) -->
+                <div class="skill-categories" *ngIf="activeTab === 'technical'">
+                    <div *ngFor="let category of skillCategories" class="skill-category">
+                        <h3 class="category-title">{{category.name}}</h3>
+                        
+                        <!-- Skills within category -->
+                        <div class="skills-container">
+                            <div *ngFor="let skill of category.skills" class="skill-item" [title]="skill.name">
+                                <div class="skill-icon" *ngIf="skill.icon">
+                                    <i [class]="skill.icon"></i>
+                                </div>
+                                <div class="skill-name">{{skill.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- General Skills (shown when general tab is active) -->
+                <div class="skill-categories" *ngIf="activeTab === 'general'">
+                    <div *ngFor="let category of generalSkillCategories" class="skill-category">
+                        <h3 class="category-title">{{category.name}}</h3>
+                        
+                        <!-- Skills within category -->
+                        <div class="skills-container">
+                            <div *ngFor="let skill of category.skills" class="skill-item" [title]="skill.name">
+                                <div class="skill-icon" *ngIf="skill.icon">
+                                    <i [class]="skill.icon"></i>
+                                </div>
+                                <div class="skill-name">{{skill.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

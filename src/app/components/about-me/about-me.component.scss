@@ -11,17 +11,18 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
 .about-section {
   position: relative;
   min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: $floral-white;
   padding: 60px 20px;
   background-color: $eerie-black;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   /* Add subtle gradient background */
   background-image: linear-gradient(to bottom right, 
     rgba(0, 0, 0, 0.1) 0%, 
@@ -43,20 +44,24 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   .content {
     position: relative;
     z-index: 2;
-    max-width: 900px;
+    max-width: 1200px;
+    width: 100%;
     animation: fadeInUp 0.8s ease forwards;
     opacity: 0;
     background-color: rgba(10, 12, 12, 0.3); /* Subtle background for content */
     border-radius: 15px;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content */
   }
 
   .section-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-family: 'Roboto', sans-serif;
     color: $floral-white;
     animation: fadeInUp 0.8s ease forwards;
@@ -65,14 +70,17 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Enhanced text shadow */
     position: relative;
     display: inline-block;
+    text-align: center;
+    width: 100%; /* Ensure full width for centering */
+    margin-top: 0; /* Remove top margin */
     
     &::after {
       content: '';
       position: absolute;
-      width: 80px;
+      width: 70px;
       height: 3px;
       background-color: $engineering-orange;
-      bottom: -10px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 2px;
@@ -80,16 +88,32 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     }
   }
 
-  .bio {
-    font-size: 1.3rem;
-    line-height: 1.7;
-    font-family: 'Roboto', sans-serif;
-    text-align: justify;
-    color: $floral-white;
-    margin-bottom: 40px;
+  /* Two-column layout container */
+  .about-container {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px; /* Reduced margin-top */
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center the columns */
+    width: 100%;
+  }
+
+  /* Bio column (left side) */
+  .bio-column {
+    flex: 6; /* Takes 60% of the space */
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.4s;
     opacity: 0;
+    padding-top: 5px; /* Add a little padding at the top */
+  }
+
+  .bio {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    color: $floral-white;
+    margin-bottom: 30px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     
     /* Add subtle highlighting to important phrases */
@@ -100,24 +124,21 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
   }
 
   .quote {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-style: italic;
     font-family: 'Georgia', serif;
     color: $engineering-orange;
     text-align: center;
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.6s;
-    opacity: 0;
     text-shadow: 0 0 4px rgba($engineering-orange, 0.4);
     margin-top: 20px;
-    padding: 10px;
+    padding: 12px;
     border-left: 3px solid $engineering-orange;
     background-color: rgba(209, 59, 46, 0.05);
     border-radius: 0 5px 5px 0;
     
     &::before {
       content: '"';
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       vertical-align: bottom;
       line-height: 0;
       position: relative;
@@ -126,12 +147,165 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
     
     &::after {
       content: '"';
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       vertical-align: bottom;
       line-height: 0;
       position: relative;
       top: 5px;
     }
+  }
+
+  /* Skills column (right side) */
+  .skills-column {
+    flex: 4; /* Takes 40% of the space */
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.5s; /* Slightly faster animation delay */
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: fit-content;
+    margin-top: -15px; /* Negative margin to move it up */
+  }
+
+  .skills-title {
+    font-size: 1.7rem;
+    color: $floral-white;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background-color: $engineering-orange;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 1px;
+    }
+  }
+  
+  /* Skills Tabs */
+  .skills-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  
+  .tab {
+    padding: 7px 18px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    color: $taupe-gray;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    &:hover {
+      background-color: rgba(209, 59, 46, 0.15);
+      color: $floral-white;
+      transform: translateY(-2px);
+    }
+    
+    &.active {
+      background-color: rgba(209, 59, 46, 0.3);
+      color: $floral-white;
+      border-color: rgba(209, 59, 46, 0.4);
+      box-shadow: 0 2px 8px rgba(209, 59, 46, 0.25);
+    }
+  }
+
+  .skill-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+    
+    /* Scrollbar styling */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(209, 59, 46, 0.3);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(209, 59, 46, 0.5);
+    }
+  }
+
+  .skill-category {
+    margin-bottom: 5px;
+  }
+
+  .category-title {
+    font-size: 1.2rem;
+    color: $engineering-orange;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(209, 59, 46, 0.3);
+    padding-bottom: 4px;
+  }
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 6px 10px;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    cursor: default;
+    
+    &:hover {
+      background-color: rgba(209, 59, 46, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .skill-icon {
+    color: $engineering-orange;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    
+    i {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .skill-item:hover .skill-icon {
+    transform: scale(1.2);
+  }
+
+  .skill-name {
+    font-size: 0.9rem;
+    color: $floral-white;
+    font-weight: 500;
   }
 }
 
@@ -148,65 +322,358 @@ $hover-shadow: rgba(209, 59, 46, 0.4); /* Enhanced shadow color for hover effect
 }
 
 /* Responsive Adjustments */
+/* Larger laptops and desktops */
+@media (max-width: 1200px) {
+  .about-section {
+    .content {
+      max-width: 95%;
+    }
+    
+    .skill-categories {
+      max-height: 320px;
+    }
+  }
+}
+
+/* Laptops and smaller desktops */
+@media (max-width: 992px) {
+  .about-section {
+    padding: 50px 20px;
+    
+    .section-title {
+      font-size: 2.2rem;
+    }
+    
+    .content {
+      padding: 20px;
+    }
+    
+    .about-container {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center; /* Center items when stacked */
+    }
+    
+    .bio-column, .skills-column {
+      flex: 1 1 100%;
+      width: 100%;
+      max-width: 600px; /* Limit width when stacked */
+    }
+    
+    .bio {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    
+    .skills-column {
+      padding: 15px;
+      margin-top: 0; /* Reset negative margin on mobile */
+    }
+    
+    .skills-title {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    
+    .skill-categories {
+      max-height: 250px;
+      gap: 15px;
+    }
+    
+    .skills-container {
+      gap: 8px;
+    }
+    
+    .skill-item {
+      padding: 5px 10px;
+    }
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
   .about-section {
     padding: 40px 15px;
 
     .content {
-      padding: 20px;
-      max-width: 95%;
+      padding: 20px 15px;
     }
 
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
+      margin-bottom: 20px;
       
       &::after {
-        width: 60px;
+        width: 50px;
         height: 2px;
       }
     }
 
     .bio {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .quote {
-      font-size: 1rem;
-      padding: 8px;
-      border-left-width: 2px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .about-section {
-    .content {
-      padding: 15px;
-    }
-    
-    .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      
-      &::after {
-        width: 50px;
-      }
-    }
-    
-    .bio {
       font-size: 1rem;
       line-height: 1.5;
-      text-align: left;
+      margin-bottom: 25px;
     }
     
-    .quote {
+    .skills-title {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    
+    .skills-tabs {
+      margin-bottom: 12px;
+    }
+    
+    .tab {
+      padding: 6px 15px;
+      font-size: 0.85rem;
+    }
+    
+    .category-title {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .skill-categories {
+      gap: 12px;
+    }
+    
+    .skills-container {
+      gap: 6px;
+    }
+    
+    .skill-item {
+      padding: 4px 8px;
+      border-radius: 15px;
+    }
+    
+    .skill-name {
+      font-size: 0.85rem;
+    }
+    
+    .skill-icon {
       font-size: 0.9rem;
-      padding: 6px;
+    }
+
+    .quote {
+      font-size: 0.95rem;
+      padding: 10px;
       
       &::before, &::after {
         font-size: 1.4rem;
       }
+    }
+  }
+}
+
+/* Large mobile phones */
+@media (max-width: 576px) {
+  .about-section {
+    padding: 30px 12px;
+    
+    .content {
+      padding: 15px 12px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      
+      &::after {
+        width: 45px;
+      }
+    }
+    
+    .bio {
+      font-size: 0.95rem;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    
+    .skills-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      
+      &::after {
+        width: 40px;
+      }
+    }
+    
+    .skills-tabs {
+      margin-bottom: 10px;
+    }
+    
+    .tab {
+      padding: 5px 12px;
+      font-size: 0.8rem;
+    }
+    
+    .skill-categories {
+      max-height: 220px;
+      gap: 10px;
+    }
+    
+    .category-title {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+    
+    .quote {
+      font-size: 0.9rem;
+      padding: 8px;
+      
+      &::before, &::after {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 25px 10px;
+    
+    .content {
+      padding: 12px 10px;
+      border-radius: 12px;
+    }
+    
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      
+      &::after {
+        width: 40px;
+        height: 2px;
+      }
+    }
+    
+    .about-container {
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .bio {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+    
+    .skills-column {
+      padding: 12px 10px;
+    }
+    
+    .skills-title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      
+      &::after {
+        width: 35px;
+      }
+    }
+    
+    .skills-tabs {
+      margin-bottom: 8px;
+    }
+    
+    .tab {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      border-radius: 15px;
+    }
+    
+    .skill-categories {
+      max-height: 200px;
+      gap: 8px;
+    }
+    
+    .category-title {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+      padding-bottom: 3px;
+    }
+    
+    .skills-container {
+      gap: 5px;
+    }
+    
+    .skill-item {
+      padding: 3px 7px;
+      gap: 4px;
+      border-radius: 12px;
+    }
+    
+    .skill-name {
+      font-size: 0.8rem;
+    }
+    
+    .skill-icon {
+      font-size: 0.85rem;
+    }
+    
+    .quote {
+      font-size: 0.85rem;
+      padding: 7px;
+      border-left-width: 2px;
+      
+      &::before, &::after {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Small mobile phones */
+@media (max-width: 380px) {
+  .about-section {
+    padding: 20px 8px;
+    
+    .content {
+      padding: 10px 8px;
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+      
+      &::after {
+        width: 35px;
+      }
+    }
+    
+    .bio {
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+    
+    .skills-title {
+      font-size: 1.1rem;
+    }
+    
+    .tab {
+      padding: 3px 8px;
+      font-size: 0.7rem;
+    }
+    
+    .skill-categories {
+      max-height: 180px;
+    }
+    
+    .category-title {
+      font-size: 0.9rem;
+    }
+    
+    .skill-item {
+      padding: 2px 6px;
+    }
+    
+    .skill-name {
+      font-size: 0.75rem;
+    }
+    
+    .quote {
+      font-size: 0.8rem;
+      padding: 6px;
     }
   }
 }

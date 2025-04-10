@@ -9,12 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  // You could add properties here to dynamically generate contact methods or social links
+  // Contact methods with social links
   contactMethods = [
     {
       title: 'Stack Overflow',
       icon: 'stack-overflow',
-      link: 'https://stackoverflow.com/users/your-id',
+      link: 'https://stackoverflow.com/users/30213000/stefan-d799',
       linkText: 'View Profile'
     },
     {
@@ -34,10 +34,16 @@ export class ContactComponent {
       icon: 'twitter',
       link: 'https://x.com/stefan_d799',
       linkText: 'Follow'
+    },
+    {
+      title: 'Resume PDF',
+      icon: 'file-pdf',
+      link: 'assets/documents/stefan-dinu-resume.pdf', // Make sure to create this folder and add your PDF
+      linkText: 'Download CV'
     }
   ];
   
-  // Additional social links - use these if you want to display the extra social icons
+  // Additional social links if needed in the future
   socialLinks = [
     {
       name: 'Email',
